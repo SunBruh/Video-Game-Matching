@@ -1,0 +1,22 @@
+/* resets */
+body,
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.game-container {
+  display: grid;
+  /* grid-template-columns: 200px 200px 200px; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  background-color: black;
+  height: 15vh;
+  width: 20vw;
+  border: 1px solid red;
+  margin: 10px;
+}
