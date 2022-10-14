@@ -98,15 +98,14 @@ for (let i = 0; i < cardArray.length; i++) {
   let backDiv = document.createElement("div");
   let frontImage = document.createElement("img");
   let backImage = document.createElement("img");
-
-  outerDiv.classList.add("flip-card-outer");
+  let dataType = document.outerDiv.classList.add("flip-card-outer");
   innerDiv.classList.add("flip-card-inner");
   frontDiv.classList.add("flip-card-front");
   backDiv.classList.add("flip-card-back");
   frontImage.classList.add("front-image");
   backImage.classList.add("back-image");
-  frontImage.setAttribute("src", cardArray[i].image);
-  backImage.setAttribute("src", "assets/BackOfCard.png");
+  frontImage.setAttribute("src", "assets/BackOfCard.png");
+  backImage.setAttribute("src", cardArray[i].image);
 
   frontDiv.append(frontImage);
   backDiv.append(backImage);
@@ -114,3 +113,12 @@ for (let i = 0; i < cardArray.length; i++) {
   outerDiv.append(innerDiv);
   gameContainer.append(outerDiv);
 }
+gameContainer.addEventListener("click", (e) => {
+  console.log(e.target.parentNode.parentNode.parentNode);
+  if (e.target.classList.contains("front-image")) {
+    e.target.parentNode.parentNode.classList.add("flip");
+  }
+  // setTimeout(() => {
+  //   e.target.parentNode.parentNode.classList.remove("flip");
+  // }, 1000);
+});
