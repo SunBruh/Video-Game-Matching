@@ -1,0 +1,15 @@
+{
+  "folders": [
+	{
+		"name": "Video-Game-Matching",
+		"path": "."
+	},
+	{
+		"name": "assets",
+		"path": "../assets"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Video-Game-Matching"
+  }
+}
