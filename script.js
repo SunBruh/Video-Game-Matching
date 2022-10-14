@@ -103,7 +103,8 @@ for (let i = 0; i < cardArray.length; i++) {
   innerDiv.classList.add("flip-card-inner");
   frontDiv.classList.add("flip-card-front");
   backDiv.classList.add("flip-card-back");
-  frontImage.style.width = "100%";
+  frontImage.classList.add("front-image");
+  backImage.classList.add("back-image");
   frontImage.setAttribute("src", cardArray[i].image);
   backImage.setAttribute("src", "assets/BackOfCard.png");
 
