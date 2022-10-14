@@ -40,13 +40,15 @@ header {
   top: 109px;
   /* background-color: red; */
 }
-.card {
+.flip-card-outer {
+  display: flex;
+  align-items: center;
   height: 15vh;
   width: 20vw;
   border: 2px solid orange;
   background-color: lightcoral;
   margin: 10px;
-  background-size: 77px;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-blend-mode: multiply;
   background-image: url(/assets/clipart1287443.png);
