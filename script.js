@@ -61,7 +61,12 @@ const cardArray = [
     id: 12,
   },
 ];
+// const popupDiv = document.createElement ("div")
+// popupDiv.classList.add("")
+const popUp = document.querySelector(".popUp");
 const gameContainer = document.querySelector(".game-container");
+const startButton = document.querySelector(".start-button");
+let winCounter = 0;
 function shuffle(cardArray) {
   let m = cardArray.length,
     t,
@@ -81,7 +86,6 @@ for (let i = 0; i < cardArray.length; i++) {
   let frontImage = document.createElement("img");
   let backImage = document.createElement("img");
 
-
   outerDiv.classList.add("flip-card-outer");
   frontImage.classList.add("front-image");
   backImage.classList.add("back-image");
@@ -91,11 +95,9 @@ for (let i = 0; i < cardArray.length; i++) {
   backImage.setAttribute("src", "assets/BackOfCard.png");
   frontImage.setAttribute("src", cardArray[i].image);
 
-
   outerDiv.append(frontImage, backImage);
   gameContainer.append(outerDiv);
 }
-
 
 gameContainer.addEventListener("click", (e) => {
   //console.log(e.target.parentNode);
@@ -124,13 +126,19 @@ function flipCard(e) {
     secondCard = e.target.parentNode.getAttribute("data-framework");
 
     if (firstCard === secondCard) {
+      winCounter += 1;
       const removePair = document.querySelectorAll(".flip");
       removePair.forEach((card) => {
         setTimeout(() => {
-          card.style.visibility = "hidden";
+          // card.style.visibility = "hidden";
+          card.classList.add("hide");
         }, 1000);
       });
-      //
+      console.log(winCounter);
+      if (winCounter === Math.floor(cards.length / 2)) {
+        popUp.style.display = "block";
+      }
+
       console.log("it's a match!");
     } else {
       const allCards = document.querySelectorAll(".flip-card-outer");
@@ -143,26 +151,39 @@ function flipCard(e) {
       });
     }
   }
+  cards.forEach((card) => {});
 }
 
 cards.forEach((card) => card.addEventListener("click", flipCard));
-
-var timerVariable = setInterval(countUpTimer, 1000);
-var totalSeconds = 0;
-
-function countUpTimer() {
-  ++totalSeconds;
-  var minutes = Math.floor(totalSeconds / 60);
-  var seconds = totalSeconds - minutes * 60;
-  document.getElementById("timer").innerHTML = `0${minutes}:${seconds}`;
-}
-countUpTimer();
 
 const resetbutton = document.querySelector(".reset");
 
 resetbutton.addEventListener("click", () => {
   location.reload();
 });
+
+startButton.addEventListener("click", () => {
+  let timerVariable = setInterval(countUpTimer, 1000);
+  let totalSeconds = 0;
+
+  function countUpTimer() {
+    ++totalSeconds;
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds - minutes * 60;
+    document.getElementById("timer").innerHTML = `0${minutes}:${seconds}`;
+  }
+  countUpTimer();
+});
+
+const stopGame = () => {
+  function countUpTimer() {
+    ++totalSeconds;
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds - minutes * 60;
+    document.getElementById("timer").innerHTML = `0${minutes}:${seconds}`;
+  }
+  countUpTimer();
+};
 
 //win condition for the game in our javascript
 //when all things all hidden "you have won" that will stop the timer and throw up the pop up window that we want to do.
