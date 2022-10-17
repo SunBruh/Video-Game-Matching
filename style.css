@@ -1,79 +1,72 @@
-body,
-h1,
-p {
-  margin: 0;
+
+* {
   padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
+  height: 100vh;
+  display: flex;
   background-image: url(/assets/Backgroundimg.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-header {
-  left: 0px;
-  top: 0px;
-  background-color: blue;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .game-container {
-  justify-content: space-around;
-  display: grid;
-  grid-template-columns: 200px 200px 200px;
-}
-.flip-card-outer {
+  width: 640px;
+  height: 640px;
+  margin: auto;
   display: flex;
-  align-items: center;
-  background-color: transparent;
-  width: 300px;
-  height: 200px;
-  border: 1px solid #f1f1f1;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  flex-wrap: wrap;
+  perspective: 1000px;
+
 }
 
-/* This container is needed to position the front and back side */
-.flip-card-inner {
+.flip-card-outer {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
   position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
+  transform: scale(1);
   transform-style: preserve-3d;
+  transition: transform 0.5s;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip {
+.flip-card-outer:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.flip-card-outer.flip {
   transform: rotateY(180deg);
 }
 
-/* Position the front and back side */
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-}
-
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
-
-/* Style the back side */
-.flip-card-back {
-  background-color: dodgerblue;
-  color: white;
-  transform: rotateY(180deg);
-}
 .front-image,
 .back-image {
-  height: 100%;
   width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #1500ff, #00ffff, #007bff, #1500ff);
+  background-size: 400%;
+  animation: animate 25s linear infinite;
+  backface-visibility: hidden;
+}
+.hide {
+  visibility: hidden;
+}
+.front-image {
+  transform: rotateY(180deg);
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
 }
