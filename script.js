@@ -66,7 +66,10 @@ const cardArray = [
 const popUp = document.querySelector(".popUp");
 const gameContainer = document.querySelector(".game-container");
 const startButton = document.querySelector(".start-button");
+const resetbutton = document.querySelector(".reset");
 let winCounter = 0;
+let timerVariable;
+let totalSeconds = 0;
 function shuffle(cardArray) {
   let m = cardArray.length,
     t,
@@ -99,12 +102,12 @@ for (let i = 0; i < cardArray.length; i++) {
   gameContainer.append(outerDiv);
 }
 
-gameContainer.addEventListener("click", (e) => {
-  //console.log(e.target.parentNode);
-  if (e.target.classList.contains("front-image")) {
-    e.target.parentNode.parentNode.classList.add("flip");
-  }
-});
+// gameContainer.addEventListener("click", (e) => {
+//   //console.log(e.target.parentNode);
+//   if (e.target.classList.contains("front-image")) {
+//     e.target.parentNode.parentNode.classList.add("flip");
+//   }
+// });
 
 const cards = document.querySelectorAll(".flip-card-outer");
 
@@ -114,6 +117,7 @@ let firstCard, secondCard;
 function flipCard(e) {
   if (e.target.classList.contains("back-image")) {
     e.target.parentNode.classList.add("flip");
+    e.target.parentNode.removeEventListener("click", flipCard);
   }
 
   if (!hasFlippedCard) {
@@ -133,11 +137,12 @@ function flipCard(e) {
           // card.style.visibility = "hidden";
           card.classList.add("hide");
         }, 1000);
+        console.log(winCounter);
+        if (winCounter === Math.floor(cards.length / 2)) {
+          popUp.style.display = "block";
+          clearInterval(timerVariable);
+        }
       });
-      console.log(winCounter);
-      if (winCounter === Math.floor(cards.length / 2)) {
-        popUp.style.display = "block";
-      }
 
       console.log("it's a match!");
     } else {
@@ -146,31 +151,28 @@ function flipCard(e) {
         if (card.classList.contains("flip")) {
           setTimeout(() => {
             card.classList.remove("flip");
+            card.addEventListener("click", flipCard);
           }, 1000);
         }
       });
     }
   }
-  cards.forEach((card) => {});
 }
 
 cards.forEach((card) => card.addEventListener("click", flipCard));
-
-const resetbutton = document.querySelector(".reset");
 
 resetbutton.addEventListener("click", () => {
   location.reload();
 });
 
 startButton.addEventListener("click", () => {
-  let timerVariable = setInterval(countUpTimer, 1000);
-  let totalSeconds = 0;
-
+  timerVariable = setInterval(countUpTimer, 1000);
   function countUpTimer() {
     ++totalSeconds;
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = totalSeconds - minutes * 60;
     document.getElementById("timer").innerHTML = `0${minutes}:${seconds}`;
+    gameContainer.style.visibility = "visible";
   }
   countUpTimer();
 });
