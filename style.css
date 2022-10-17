@@ -1,66 +1,70 @@
-/* resets */
-body,
-h1,
-p {
-  margin: 0;
+* {
   padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  position: relative;
-  width: 390px;
   height: 100vh;
-  background-color: black;
-  background-image: url(/assets/g8rmol0aqk131.png);
-  background-repeat: no-repeat;
-  background-size: 100vh;
-}
-
-header {
-  position: absolute;
-  width: 390px;
-  height: 73px;
-  left: 0px;
-  top: 0px;
-  background-color: blue;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  background-image: url(/assets/Backgroundimg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .game-container {
-  display: grid;
+  width: 640px;
+  height: 640px;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  position: absolute;
-  width: 320px;
-  height: 500px;
-  left: 29px;
-  top: 109px;
-  /* background-color: red; */
-}
-.flip-card-outer {
-  display: flex;
-  align-items: center;
-  height: 15vh;
-  width: 20vw;
-  border: 2px solid orange;
-  background-color: lightcoral;
-  margin: 10px;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-blend-mode: multiply;
-  background-image: url(/assets/clipart1287443.png);
+  perspective: 1000px;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
+.flip-card-outer {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.flip-card-outer:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.flip-card-outer.flip {
+  transform: rotateY(180deg);
+}
+
+.front-image,
+.back-image {
   width: 100%;
-  height: 60px;
-  background-color: blue;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #1500ff, #00ffff, #007bff, #1500ff);
+  background-size: 400%;
+  animation: animate 25s linear infinite;
+  backface-visibility: hidden;
+}
+.hide {
+  visibility: hidden;
+}
+.front-image {
+  transform: rotateY(180deg);
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
 }
