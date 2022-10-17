@@ -81,6 +81,7 @@ for (let i = 0; i < cardArray.length; i++) {
   let frontImage = document.createElement("img");
   let backImage = document.createElement("img");
 
+
   outerDiv.classList.add("flip-card-outer");
   frontImage.classList.add("front-image");
   backImage.classList.add("back-image");
@@ -90,9 +91,11 @@ for (let i = 0; i < cardArray.length; i++) {
   backImage.setAttribute("src", "assets/BackOfCard.png");
   frontImage.setAttribute("src", cardArray[i].image);
 
+
   outerDiv.append(frontImage, backImage);
   gameContainer.append(outerDiv);
 }
+
 
 gameContainer.addEventListener("click", (e) => {
   //console.log(e.target.parentNode);
