@@ -167,3 +167,61 @@ main {
     background-position: 400%;
   }
 }
+
+@media screen and (min-width: 768px) {
+  body,
+  header,
+  h1 {
+    margin: 0;
+  }
+  body {
+    background-image: url(/assets/JWST.png);
+  }
+  header {
+    border: solid black 1px;
+  }
+  h1 {
+    font-size: 100px;
+  }
+  .button-box {
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .start-button {
+    border: solid black 1px;
+    width: 15%;
+    font-size: 100px;
+  }
+  .start-button:hover {
+    background-color: #00ffff;
+    color: white;
+  }
+  .reset {
+    border: solid black 1px;
+    width: 15%;
+    font-size: 100px;
+  }
+  .reset:hover {
+    background-color: #00ffff;
+    color: white;
+  }
+
+  .flip-card-outer {
+    width: 20%;
+    height: 30%;
+    border: none;
+  }
+  .front-image,
+  .back-image {
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  .footer {
+    border: solid black 1px;
+  }
+  #timer {
+    font-size: 100px;
+  }
+}
