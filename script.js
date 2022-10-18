@@ -1,63 +1,62 @@
-"use strict";
 const cardArray = [
   {
-    name: "CallOfDuty",
-    image: "/assets/COD.png",
+    name: "OverWatch",
+    image: "/assets/OverWatch.png",
     id: 1,
   },
   {
-    name: "CallOfDuty",
-    image: "/assets/COD.png",
+    name: "OverWatch",
+    image: "/assets/OverWatch.png",
     id: 2,
   },
   {
     name: "MineCraft",
-    image: "/assets/Minecraft.png",
+    image: "/assets/Minecraft2.png",
     id: 3,
   },
   {
     name: "MineCraft",
-    image: "/assets/Minecraft.png",
+    image: "/assets/Minecraft2.png",
     id: 4,
   },
   {
-    name: "Zelda",
-    image: "/assets/Zelda.png",
+    name: "LegendOfZelda",
+    image: "/assets/LegendOfZelda.png",
     id: 5,
   },
   {
-    name: "Zelda",
-    image: "/assets/Zelda.png",
+    name: "LegendOfZelda",
+    image: "/assets/LegendOfZelda.png",
     id: 6,
   },
   {
     name: "AgeOfEmpires",
-    image: "/assets/AgeOfEmpires.png",
+    image: "/assets/AgeOfEmpires1.png",
     id: 7,
   },
   {
     name: "AgeOfEmpires",
-    image: "/assets/AgeOfEmpires.png",
+    image: "/assets/AgeOfEmpires1.png",
     id: 8,
   },
   {
     name: "SuperSmash",
-    image: "/assets/SuperSmash.png",
+    image: "/assets/SuperSmash1.png",
     id: 9,
   },
   {
     name: "SuperSmash",
-    image: "/assets/SuperSmash.png",
+    image: "/assets/SuperSmash1.png",
     id: 10,
   },
   {
     name: "Metroid",
-    image: "/assets/Metroid.png",
+    image: "/assets/Metroid1.png",
     id: 11,
   },
   {
     name: "Metroid",
-    image: "/assets/Metroid.png",
+    image: "/assets/Metroid1.png",
     id: 12,
   },
 ];
@@ -88,16 +87,12 @@ for (let i = 0; i < cardArray.length; i++) {
   let outerDiv = document.createElement("div");
   let frontImage = document.createElement("img");
   let backImage = document.createElement("img");
-
   outerDiv.classList.add("flip-card-outer");
   frontImage.classList.add("front-image");
   backImage.classList.add("back-image");
-
   outerDiv.setAttribute("data-framework", cardArray[i].name);
-
-  backImage.setAttribute("src", "assets/BackOfCard.png");
+  backImage.setAttribute("src", "assets/Backofcard1.png");
   frontImage.setAttribute("src", cardArray[i].image);
-
   outerDiv.append(frontImage, backImage);
   gameContainer.append(outerDiv);
 }
@@ -110,16 +105,13 @@ for (let i = 0; i < cardArray.length; i++) {
 // });
 
 const cards = document.querySelectorAll(".flip-card-outer");
-
 let hasFlippedCard = false;
 let firstCard, secondCard;
-
 function flipCard(e) {
   if (e.target.classList.contains("back-image")) {
     e.target.parentNode.classList.add("flip");
     e.target.parentNode.removeEventListener("click", flipCard);
   }
-
   if (!hasFlippedCard) {
     //first click
     hasFlippedCard = true;
@@ -158,13 +150,11 @@ function flipCard(e) {
     }
   }
 }
-
 cards.forEach((card) => card.addEventListener("click", flipCard));
 
 resetbutton.addEventListener("click", () => {
   location.reload();
 });
-
 startButton.addEventListener("click", () => {
   timerVariable = setInterval(countUpTimer, 1000);
   function countUpTimer() {
@@ -176,17 +166,15 @@ startButton.addEventListener("click", () => {
   }
   countUpTimer();
 });
-
 const stopGame = () => {
   function countUpTimer() {
     ++totalSeconds;
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = totalSeconds - minutes * 60;
-    document.getElementById("timer").innerHTML = `0${minutes}:${seconds}`;
+    document.getElementById("timer").innerHTML = `${minutes}:${seconds}`;
   }
   countUpTimer();
 };
-
 //win condition for the game in our javascript
 //when all things all hidden "you have won" that will stop the timer and throw up the pop up window that we want to do.
 // Need a start button to initiate the game. Timer should start on click (Start button);
