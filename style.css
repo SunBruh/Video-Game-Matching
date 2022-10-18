@@ -5,6 +5,7 @@
 }
 
 body {
+  font-family: "Electrolize", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,18 +26,15 @@ header {
   background: linear-gradient(90deg, #1500ff, #00ffff, #007bff, #1500ff);
 }
 h1 {
+  font-family: "Electrolize", sans-serif;
   text-align: center;
   color: black;
 }
 main {
-  height: 76%;
-  width: 85%;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
   display: flex;
-  align-content: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: auto;
-  perspective: 1000px;
 }
 
 .button-box {
@@ -48,6 +46,7 @@ main {
   justify-content: space-around;
 }
 .start-button {
+  font-family: "Electrolize", sans-serif;
   background-color: #007bff;
   top: 3%;
   border-radius: 20px;
@@ -61,6 +60,7 @@ main {
   justify-content: center;
 }
 .reset {
+  font-family: "Electrolize", sans-serif;
   background-color: #007bff;
   top: 3%;
   border-radius: 20px;
@@ -75,20 +75,29 @@ main {
 }
 
 .popUp {
+  object-fit: fill;
+  background-image: url(/assets/GameOver.gif);
   display: none;
-  height: 100px;
-  width: 100px;
+  height: 300px;
+  width: 90%;
+}
+
+.popUpShow {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .game-container {
-  height: 95%;
+  height: 90%;
   width: 90%;
   display: flex;
   align-content: space-between;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: auto;
-  perspective: 1000px;
   visibility: hidden;
 }
 
@@ -103,7 +112,7 @@ main {
   transform-style: preserve-3d;
   transition: transform 0.5s;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  border: 3px black solid;
+  border: 2px black solid;
   border-radius: 5px;
 }
 
@@ -118,7 +127,7 @@ main {
 
 .front-image,
 .back-image {
-  object-fit: scale-down;
+  object-fit: cover;
   width: 100%;
   height: 100%;
   padding: 10px;
@@ -156,66 +165,5 @@ main {
   }
   100% {
     background-position: 400%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  body {
-    height: 100vh;
-    display: flex;
-    background-image: url(/assets/Backgroundimg1.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .popUp {
-    display: none;
-  }
-  .memory-game {
-    width: 640px;
-    height: 640px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    perspective: 1000px;
-  }
-  .memory-card {
-    object-fit: fill;
-    width: calc(25% - 10px);
-    height: calc(33.333% - 10px);
-    margin: 5px;
-    position: relative;
-    transform: scale(1);
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-  }
-  .memory-card:active {
-    transform: scale(0.97);
-    transition: transform 0.2s;
-  }
-  .memory-card.flip {
-    transform: rotateY(180deg);
-  }
-  .front-face,
-  .back-face {
-    width: 100%;
-    height: 100%;
-    padding: 15px;
-    position: absolute;
-    border-radius: 35px;
-    background: linear-gradient(90deg, #1500ff, #00ffff, #007bff, #1500ff);
-    background-size: 400%;
-    animation: animate 25s linear infinite;
-    backface-visibility: hidden;
-  }
-  .hide {
-    visibility: hidden;
-  }
-  .front-face {
-    transform: rotateY(180deg);
-  }
-  .start-button {
-    display: flex;
-    height: 10%;
   }
 }
