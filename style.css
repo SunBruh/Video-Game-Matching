@@ -13,6 +13,7 @@ body {
   background-image: url(/assets/Backgroundimg1.png);
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
 header {
   display: flex;
@@ -75,11 +76,13 @@ main {
 }
 
 .popUp {
-  object-fit: fill;
-  background-image: url(/assets/GameOver.gif);
   display: none;
   height: 300px;
   width: 90%;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(/assets/GameOver.gif);
 }
 
 .popUpShow {
@@ -181,7 +184,7 @@ main {
     border: solid black 1px;
   }
   h1 {
-    font-size: 100px;
+    font-size: 200%;
   }
   .button-box {
     align-items: center;
@@ -190,16 +193,19 @@ main {
   .start-button {
     border: solid black 1px;
     width: 15%;
-    font-size: 100px;
+    font-size: 150%;
   }
   .start-button:hover {
     background-color: #00ffff;
     color: white;
   }
+  .popUp {
+    width: 400px;
+  }
   .reset {
     border: solid black 1px;
     width: 15%;
-    font-size: 100px;
+    font-size: 150%;
   }
   .reset:hover {
     background-color: #00ffff;
@@ -222,6 +228,6 @@ main {
     border: solid black 1px;
   }
   #timer {
-    font-size: 100px;
+    font-size: 200%;
   }
 }
