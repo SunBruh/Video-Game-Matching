@@ -76,6 +76,8 @@ main {
 
 .popUp {
   display: none;
+  height: 100px;
+  width: 100px;
 }
 
 .game-container {
@@ -87,6 +89,7 @@ main {
   flex-wrap: wrap;
   margin: auto;
   perspective: 1000px;
+  visibility: hidden;
 }
 
 .flip-card-outer {
@@ -100,6 +103,8 @@ main {
   transform-style: preserve-3d;
   transition: transform 0.5s;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  border: 3px black solid;
+  border-radius: 5px;
 }
 
 .flip-card-outer:active {
@@ -113,11 +118,11 @@ main {
 
 .front-image,
 .back-image {
+  object-fit: scale-down;
   width: 100%;
   height: 100%;
   padding: 10px;
   position: absolute;
-  border-radius: 5px;
   background: linear-gradient(90deg, #1500ff, #00ffff, #007bff, #1500ff);
   background-size: 400%;
   animation: animate 25s linear infinite;

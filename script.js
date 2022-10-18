@@ -96,12 +96,14 @@ for (let i = 0; i < cardArray.length; i++) {
   outerDiv.append(frontImage, backImage);
   gameContainer.append(outerDiv);
 }
+
 // gameContainer.addEventListener("click", (e) => {
 //   //console.log(e.target.parentNode);
 //   if (e.target.classList.contains("front-image")) {
 //     e.target.parentNode.parentNode.classList.add("flip");
 //   }
 // });
+
 const cards = document.querySelectorAll(".flip-card-outer");
 let hasFlippedCard = false;
 let firstCard, secondCard;
@@ -133,6 +135,7 @@ function flipCard(e) {
           clearInterval(timerVariable);
         }
       });
+
       console.log("it's a match!");
     } else {
       const allCards = document.querySelectorAll(".flip-card-outer");
@@ -148,6 +151,7 @@ function flipCard(e) {
   }
 }
 cards.forEach((card) => card.addEventListener("click", flipCard));
+
 resetbutton.addEventListener("click", () => {
   location.reload();
 });
