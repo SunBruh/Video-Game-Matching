@@ -11,12 +11,12 @@ const cardArray = [
   },
   {
     name: "MineCraft",
-    image: "/assets/Minecraft2.png",
+    image: "/assets/Minecraft1.jpeg",
     id: 3,
   },
   {
     name: "MineCraft",
-    image: "/assets/Minecraft2.png",
+    image: "/assets/Minecraft1.jpeg",
     id: 4,
   },
   {
@@ -91,7 +91,7 @@ for (let i = 0; i < cardArray.length; i++) {
   frontImage.classList.add("front-image");
   backImage.classList.add("back-image");
   outerDiv.setAttribute("data-framework", cardArray[i].name);
-  backImage.setAttribute("src", "assets/Backofcard1.png");
+  backImage.setAttribute("src", "assets/BackOfCard.png");
   frontImage.setAttribute("src", cardArray[i].image);
   outerDiv.append(frontImage, backImage);
   gameContainer.append(outerDiv);
@@ -132,6 +132,7 @@ function flipCard(e) {
         console.log(winCounter);
         if (winCounter === Math.floor(cards.length / 2)) {
           popUp.style.display = "block";
+          popUp.classList.add("popUpShow");
           clearInterval(timerVariable);
         }
       });
@@ -155,6 +156,7 @@ cards.forEach((card) => card.addEventListener("click", flipCard));
 resetbutton.addEventListener("click", () => {
   location.reload();
 });
+
 startButton.addEventListener("click", () => {
   timerVariable = setInterval(countUpTimer, 1000);
   function countUpTimer() {
@@ -163,6 +165,7 @@ startButton.addEventListener("click", () => {
     let seconds = totalSeconds - minutes * 60;
     document.getElementById("timer").innerHTML = `0${minutes}:${seconds}`;
     gameContainer.style.visibility = "visible";
+    startButton.style.visibility = "hidden";
   }
   countUpTimer();
 });
