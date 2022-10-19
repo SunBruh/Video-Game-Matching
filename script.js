@@ -128,13 +128,13 @@ function flipCard(e) {
         setTimeout(() => {
           // card.style.visibility = "hidden";
           card.classList.add("hide");
+          if (winCounter === Math.floor(cards.length / 2)) {
+            popUp.style.display = "block";
+            popUp.classList.add("popUpShow");
+            clearInterval(timerVariable);
+          }
         }, 1000);
         console.log(winCounter);
-        if (winCounter === Math.floor(cards.length / 2)) {
-          popUp.style.display = "block";
-          popUp.classList.add("popUpShow");
-          clearInterval(timerVariable);
-        }
       });
 
       console.log("it's a match!");
@@ -157,6 +157,11 @@ resetbutton.addEventListener("click", () => {
   location.reload();
 });
 
+popUp.addEventListener("click", (e) => {
+  e.target;
+  location.reload();
+});
+
 startButton.addEventListener("click", () => {
   timerVariable = setInterval(countUpTimer, 1000);
   function countUpTimer() {
@@ -169,6 +174,7 @@ startButton.addEventListener("click", () => {
   }
   countUpTimer();
 });
+
 const stopGame = () => {
   function countUpTimer() {
     ++totalSeconds;
