@@ -76,6 +76,7 @@ main {
 }
 
 .popUp {
+  position: relative;
   display: none;
   height: 300px;
   width: 90%;
@@ -94,7 +95,6 @@ main {
 }
 
 .invisible {
-  display: flex;
   cursor: pointer;
   position: absolute;
   height: 79px;
@@ -102,14 +102,6 @@ main {
   opacity: 0;
   right: 86px;
   top: 108px;
-}
-
-.red-circle {
-  display: block;
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
-  background-color: red;
 }
 
 .game-container {
